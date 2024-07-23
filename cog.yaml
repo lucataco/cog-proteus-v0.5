@@ -1,0 +1,19 @@
+# Configuration for Cog ⚙️
+# Reference: https://cog.run/yaml
+
+build:
+  gpu: true
+  python_version: "3.11"
+  python_packages:
+    - "accelerate==0.33.0"
+    - "diffusers==0.29.2"
+    - "safetensors"
+    - "torch==2.1.0"
+    - "torchvision"
+    - "transformers==4.43.0"
+
+  run:
+    - curl -o /usr/local/bin/pget -L "https://github.com/replicate/pget/releases/latest/download/pget_$(uname -s)_$(uname -m)" && chmod +x /usr/local/bin/pget
+    
+# predict.py defines how predictions are run on your model
+predict: "predict.py:Predictor"
